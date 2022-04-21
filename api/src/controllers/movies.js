@@ -1,10 +1,12 @@
 const { response } = require('express');
-const { Pelicula, Categoria, Op } = require('../db');
+const { Pelicula, Categoria, Ticket, Op } = require('../db');
 
 const getAllMovies = async (req, res = response) => {
     try {
         const movies = await Pelicula.findAll({
-            include: Categoria
+            include: {
+                model: Ticket, Categoria
+            }
         });
         res.json({ success: true, data: movies });
     } catch (error) {
@@ -107,7 +109,7 @@ const updateMovie = async (req, res = response) => {
     }
 };
 const removeMovie = async (req, res = response) => {
-    const { id } = req.params;
+    const { id } = req.query;
     try {
         const movie = await Pelicula.findByPk(id);
         if (!movie) {
