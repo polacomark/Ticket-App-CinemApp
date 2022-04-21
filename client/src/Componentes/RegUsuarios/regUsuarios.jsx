@@ -79,7 +79,7 @@ export default function CreateConductora() {
         } else {
             alert('rellenar los campos correctamente')
         }
-        //navigate('/home') 
+        navigate('/login') 
     }
 
 
