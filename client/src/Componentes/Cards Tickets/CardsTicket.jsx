@@ -106,14 +106,14 @@ export default function CardTicket({
               </Typography>
             </CardContent>
       </CardActionArea>
-      {/* <CardActions>
+      <CardActions>
         <Button size="small" color="primary">
           Share
         </Button>
-      </CardActions> */}
+      </CardActions>
       </Link>
     </Card>
-      {/* <Card className={classes.card}>
+      <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
             className={classes.formatImg}
@@ -127,12 +127,12 @@ export default function CardTicket({
             <Typography gutterBottom variant="h5" component="div">
               {original_title}
             </Typography>
-            {/* <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" color="textSecondary" component="p">
               Genero:{" "}
               {categoria.map((c, i) => (
                 <span key={i} >{c} </span>
               ))}
-            </Typography> */}
+            </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Estreno: {release_date}
             </Typography>
@@ -151,9 +151,9 @@ export default function CardTicket({
             </Button>
           </Link>
         </CardActions>
-      </Card> */}
+      </Card>
 
-      {/* <iframe width="420" height="345" src={trailer}></iframe> */}
+      <iframe width="420" height="345" src={trailer}></iframe>
     </div>
   );
 }
