@@ -28,10 +28,10 @@ let sequelize =
         },
         ssl: true,
       })
-    : new Sequelize(
-      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ticket`,
-        { logging: false, native: false }
-      );
+    : new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ticket`, {
+        logging: false,
+        native: false,
+      });
 
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ticket`,
@@ -67,14 +67,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Ticket, Pelicula, Categoria, Sucursal, User, Admin } = sequelize.models;
+const { Ticket, Pelicula, Categoria, Compra, Sucursal, User, Admin } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 Pelicula.hasMany(Ticket);
-Sucursal.hasMany(Ticket);
 User.hasMany(Ticket);
+Ticket.belongsTo(User);
 Pelicula.belongsToMany(Categoria, { through: "Pelicula_Categoria" });
 Categoria.belongsToMany(Pelicula, { through: "Pelicula_Categoria" });
 

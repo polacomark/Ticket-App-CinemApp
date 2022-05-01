@@ -1,9 +1,8 @@
 import React, { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../redux/actions/index';
+import { login, loginGoogle } from '../../redux/actions/index';
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "react-google-login";
-import { postUser } from '../../redux/actions/index';
 import Transition from '../image_transition/Transition';
 import { Button, Checkbox, CssBaseline, FormControlLabel, FormGroup, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core";
@@ -117,24 +116,22 @@ const useStyles = makeStyles((theme)=>({
       navigate('/home')
     }
   
-  const onGoogleSucces = (response)=>{
-    console.log(response);
+  const onGoogleSucces = async (response)=>{
     const usuario = response.profileObj;
     const newUserFromGoogle = {
-      nombre: usuario.familyName,
+      nombre: usuario.givenName,
       apellido: usuario.familyName,
       email: usuario.email,
       password: usuario.googleId,
       estado: true,
       imagen: usuario.imageUrl 
     }
-    dispatch(postUser(newUserFromGoogle));
-    dispatch(login(usuario.email, usuario.googleId));
+    dispatch(loginGoogle(newUserFromGoogle));
     navigate('/home');
   }
   
   const onFailGoogle = () => {
-    alert("Algo salió mal")
+    console.log("Algo salió mal");
   }
 
   const classes = useStyles();
