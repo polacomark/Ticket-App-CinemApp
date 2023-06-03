@@ -1,4 +1,8 @@
 # Getting Started with Create React App
+<p> Para iniciar con un usuario de prueba utilice
+                      usuario: hola@gmail.com
+                      pas: Hola*123</p>
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
